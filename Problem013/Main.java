@@ -4,7 +4,6 @@ O(1)时间删除链表节点
 public void deleteNode(ListNode head, ListNode deListNode) {
     if (deListNode == null || head == null)
         return;
-
     if (head == deListNode) {
         head = null;
     } else {
