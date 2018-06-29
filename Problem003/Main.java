@@ -13,23 +13,24 @@
 *    }
 *
 */
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 public class Solution {
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         if (listNode == null){
             return list;
         }
-        Stack<ListNode> mystack = new Stack<>();
+        ListNode t = new ListNode(-1);
         while(listNode != null){
-            mystack.push(listNode);
-            listNode = listNode.next;
+            ListNode ne = listNode.next;
+            listNode.next = t;
+            t = listNode;
+            listNode = ne;
         }
-        while(!mystack.empty()){
-            list.add(mystack.pop().val);
+        while(t.val != -1){
+            list.add(t.val);
+            t = t.next;
         }
-        
         return list;
     }
 }
